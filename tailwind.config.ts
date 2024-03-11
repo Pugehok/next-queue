@@ -13,8 +13,8 @@ const config: Config = {
         slate: "#141414",
         lightgray: "#666666",
         gray: "#454545",
-        green: "#37C034",
-        red: "#F75D5D",
+        accept: "#37C034",
+        denied: "#F75D5D",
       },
       fontSize: {
         h1: [

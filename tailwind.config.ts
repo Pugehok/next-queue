@@ -9,12 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        white: "F1F1FF",
-        slate: "#141414",
-        lightgray: "#666666",
-        gray: "#454545",
-        accept: "#37C034",
-        denied: "#F75D5D",
+        main: {
+          white: "F1F1FF",
+          slate: "#141414",
+          lightgray: "#666666",
+          gray: "#454545",
+          green: "#37C034",
+          red: "#F75D5D",
+        },
       },
       fontSize: {
         h1: [

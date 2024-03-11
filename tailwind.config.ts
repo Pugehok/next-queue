@@ -106,7 +106,9 @@ const config: Config = {
         ],
       },
     },
-    fontFamily: {},
+    fontFamily: {
+      primary: ["Nunito", "sans-serif"],
+    },
   },
 
   plugins: [],

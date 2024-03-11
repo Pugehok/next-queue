@@ -1,9 +1,12 @@
 'use client'
 import { Button } from "./Shared/Components/Button";
+import { NavMenu } from "./header/header";
+
 export default function Home() {
   return (
     <>
-      <main className="flex min-h-screen flex-row">
+    <NavMenu>
+    <main className="flex min-h-screen flex-row">
       <div className="m-auto">
         <div className="w-full h-ful space-y-4">
         <h1 className="text-white font-semibold italic text-2xl">
@@ -19,6 +22,7 @@ export default function Home() {
         <h1 className="text-white font-semibold italic text-3xl">[IMG]</h1>
       </div>
     </main>
+    </NavMenu>
 
     </>
 

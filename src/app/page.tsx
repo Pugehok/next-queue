@@ -1,9 +1,9 @@
 'use client'
-
 import { Button } from "./Shared/Components/Button";
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-row">
+    <>
+      <main className="flex min-h-screen flex-row">
       <div className="m-auto">
         <div className="w-full h-ful space-y-4">
         <h1 className="text-white font-semibold italic text-2xl">
@@ -13,11 +13,14 @@ export default function Home() {
          { `Наше решение поможет вам обслуживать большее количество гостей \n в загруженное время.`}
         </span>
         </div>
-       <Button color="accept" margin={4} handler={()=>console.log('Нажал')}>Начать работу</Button>
+       <Button intent={'accept'} className="rounded-xl mt-4 w-48">Начать работу</Button>
       </div>
       <div className="m-auto">
         <h1 className="text-white font-semibold italic text-3xl">[IMG]</h1>
       </div>
     </main>
+
+    </>
+
   );
 }

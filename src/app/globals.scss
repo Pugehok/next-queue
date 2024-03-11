@@ -5,11 +5,16 @@
 
 $background-color: #000000;
 
+h1{
+  margin: 0;
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
   height: 100%;
+  box-sizing: border-box;
   background-color: $background-color;
   font-family: "Nunito Sans", sans-serif;
 }

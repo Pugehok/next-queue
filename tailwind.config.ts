@@ -10,12 +10,12 @@ const config: Config = {
     extend: {
       colors: {
         main: {
-          white: "F1F1FF",
+          white: "#F1F1FF",
           slate: "#141414",
           lightgray: "#666666",
           gray: "#454545",
-          green: "#37C034",
-          red: "#F75D5D",
+          accept: "#37C034",
+          denied: "#F75D5D",
         },
       },
       fontSize: {

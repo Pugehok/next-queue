@@ -1,15 +1,23 @@
+'use client'
 
+import { Button } from "./Shared/Components/Button";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-row">
       <div className="m-auto">
-      <h1 className="text-white font-semibold italic text-2xl">Сервис автоматизации контроля очереди</h1>
-      <span className="text-white p-">Наше решение поможет вам обслуживать большее количество гостей  в загруженное время.</span>
+        <div className="w-full h-ful space-y-4">
+        <h1 className="text-white font-semibold italic text-2xl">
+          Сервис автоматизации контроля очереди
+        </h1>
+        <span className="text-main-lightgray white italic whitespace-pre-line mt-12">
+         { `Наше решение поможет вам обслуживать большее количество гостей \n в загруженное время.`}
+        </span>
+        </div>
+       <Button color="accept" margin={4} handler={()=>console.log('Нажал')}>Начать работу</Button>
       </div>
       <div className="m-auto">
-      <h1 className="text-white font-semibold italic text-3xl">[IMG]</h1>
+        <h1 className="text-white font-semibold italic text-3xl">[IMG]</h1>
       </div>
-  
     </main>
   );
 }

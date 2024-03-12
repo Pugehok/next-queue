@@ -8,7 +8,8 @@ interface SignUp {
     password: string;
 }
 
-export default function Signup() {
+
+export const Signup = () => {
     const {formData,handleChange, handleSubmit} = useAuth()
 
     return (

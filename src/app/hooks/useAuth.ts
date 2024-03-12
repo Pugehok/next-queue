@@ -3,9 +3,9 @@
 
 
 import {useState} from 'react'
-import { AXIOS_SignUpRequest } from '../axios/axios'
+import {signUpRequest } from '../axios/axios'
 
-interface SignUp {
+interface SignData {
     email: string,
     password: string
 }
@@ -13,7 +13,7 @@ interface SignUp {
 
 
 export const useAuth = () =>{
-    const [formData, setFormData] = useState<SignUp>({
+    const [formData, setFormData] = useState<SignData>({
         email: "",
         password: "",
     });
@@ -28,8 +28,7 @@ export const useAuth = () =>{
     
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        AXIOS_SignUpRequest(formData)
-            
+        signUpRequest(formData)
     }
 
     return {formData,handleChange, handleSubmit}

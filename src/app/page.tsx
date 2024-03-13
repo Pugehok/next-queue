@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "./Shared/Components/Button";
+import { Button } from "./Components/Button";
 import Link from "next/link";
 export default function Home() {
   return (

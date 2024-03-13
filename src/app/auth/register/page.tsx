@@ -1,17 +1,10 @@
 'use client'
-// import { lock, email } from "../../../assets/index"
 import Image from "next/image"
 import React, { useState } from "react";
-import { useAuth } from "../hooks/useAuth";
-interface SignUp {
-    email: string;
-    password: string;
-}
+import { useAuth } from "../../hooks/useAuth";
 
-
-export const Signup = () => {
+const SignPage:React.FC = () => {
     const {formData,handleChange, handleSubmit} = useAuth()
-
     return (
         <div className="flex justify-center items-center h-full">
             <div className="w-2/6 h-96 bg-main-slate rounded-lg flex flex-col items-center">
@@ -58,3 +51,5 @@ export const Signup = () => {
         </div>
     )
 }
+
+export default SignPage

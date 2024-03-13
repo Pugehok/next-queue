@@ -1,31 +1,52 @@
-
-
-import {useState} from 'react'
+import { useState } from "react";
 
 interface SignData {
-    email: string,
-    password: string
+  email: string;
+  password: string;
+  repeatPassword: string; // Add repeatPassword field
 }
 
+export const useAuth = () => {
+  const [formData, setFormData] = useState<SignData>({
+    email: "",
+    password: "",
+    repeatPassword: "", // Initialize repeatPassword field
+  });
 
+  const [passwordError, setPasswordError] = useState("");
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
 
-export const useAuth = () =>{
-    const [formData, setFormData] = useState<SignData>({
-        email: "",
-        password: "",
-    });
-    
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setFormData((prevData:any) => ({
-            ...prevData,
-            [name]: value,
-        }))
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (handleValidation()) {
+      console.log(formData);
+      setRegistrationSuccess(true);
     }
-    
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-    }
+  };
 
-    return {formData,handleChange, handleSubmit}
-}
+  const handleValidation = () => {
+    if (formData.password !== formData.repeatPassword) {
+      setPasswordError("Passwords do not match");
+      return false;
+    } else {
+      setPasswordError("");
+      return true;
+    }
+  };
+
+  return {
+    formData,
+    handleChange,
+    handleSubmit,
+    passwordError,
+    registrationSuccess,
+  };
+};

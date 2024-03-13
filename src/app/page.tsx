@@ -14,7 +14,7 @@ export default function Home() {
               {`Наше решение поможет вам обслуживать большее количество гостей \n в загруженное время.`}
             </span>
           </div>
-          <Link href='/signup'><Button intent={'accept'} className="rounded-xl mt-4 w-48">Начать работу</Button></Link>
+          <Link href='/auth/register'><Button intent={'accept'} className="rounded-xl mt-4 w-48">Начать работу</Button></Link>
         </div>
         <div className="m-auto">
           <h1 className="text-white font-semibold italic text-3xl">[IMG]</h1>

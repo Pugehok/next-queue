@@ -1,9 +1,6 @@
 
-'use client'
-
 
 import {useState} from 'react'
-import {signUpRequest } from '../axios/axios'
 
 interface SignData {
     email: string,
@@ -28,7 +25,6 @@ export const useAuth = () =>{
     
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        signUpRequest(formData)
     }
 
     return {formData,handleChange, handleSubmit}

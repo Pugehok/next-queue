@@ -26,21 +26,25 @@ export const useAuth = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (handleValidation()) {
-      console.log(formData);
+    if(formData.password !== formData.repeatPassword){
+      setPasswordError("Passwords do not match");
+      return false;
+    }
+    else{
+      setPasswordError('')
       setRegistrationSuccess(true);
     }
   };
 
-  const handleValidation = () => {
-    if (formData.password !== formData.repeatPassword) {
-      setPasswordError("Passwords do not match");
-      return false;
-    } else {
-      setPasswordError("");
-      return true;
-    }
-  };
+  // const handleValidation = () => {
+    // if (formData.password !== formData.repeatPassword) {
+      // setPasswordError("Passwords do not match");
+      // return false;
+    // } else {
+      // setPasswordError("");
+      // return true;
+    // }
+  // };
 
   return {
     formData,

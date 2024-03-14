@@ -1,14 +1,13 @@
 "use client";
 import { Button, CustomForm, CustomInput } from "@/app/Components/index";
 import { useAuth } from "@/app/hooks/useAuth";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const SignPage = () => {
   const {
     formData,
     handleChange,
     handleSubmit,
-    passwordError,
-    registrationSuccess,
   } = useAuth();
 
   return (
@@ -16,7 +15,11 @@ const SignPage = () => {
       <CustomForm
         title="Sign In"
         button={
-          <Button type="submit" intent={"accept"}>
+          <Button
+            type="submit"
+            intent={"accept"}
+            className="rounded-full w-32"
+          >
             Sign In
           </Button>
         }
@@ -36,7 +39,7 @@ const SignPage = () => {
           placeholder="Enter your password"
           changeHandler={handleChange}
         />
-        {registrationSuccess && <span> вы успешно авторизовались </span>}
+        <ToastContainer />
       </CustomForm>
     </>
   );

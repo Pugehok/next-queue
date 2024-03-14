@@ -1,56 +1,83 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 
 interface SignData {
   email: string;
   password: string;
-  repeatPassword: string; // Add repeatPassword field
+  confirmPassword: string;
 }
 
 export const useAuth = () => {
   const [formData, setFormData] = useState<SignData>({
     email: "",
     password: "",
-    repeatPassword: "", // Initialize repeatPassword field
+    confirmPassword: "",
   });
 
-  const [passwordError, setPasswordError] = useState("");
-  const [registrationSuccess, setRegistrationSuccess] = useState(false);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [token, setToken] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if(formData.password !== formData.repeatPassword){
-      setPasswordError("Passwords do not match");
-      return false;
+
+    if (!formData.email || !formData.password) {
+      setErrorMessage("Please fill in all fields");
+      return;
     }
-    else{
-      setPasswordError('')
-      setRegistrationSuccess(true);
+    login(formData.email, formData.password);
+  };
+
+  const login = async (email: string, password: string) => {
+    try {
+      const response = await fetch(
+        "https://api.escuelajs.co/api/v1/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Login failed");
+      }
+
+      const data = await response.json();
+      setToken(data.access_token);
+      toast.success("Login successful!");
+      console.log(token);
+      setErrorMessage(null);
+    } catch (error) {
+      setErrorMessage("Login failed. Please try again.");
+      toast.error(errorMessage);
     }
   };
 
-  // const handleValidation = () => {
-    // if (formData.password !== formData.repeatPassword) {
-      // setPasswordError("Passwords do not match");
-      // return false;
-    // } else {
-      // setPasswordError("");
-      // return true;
-    // }
-  // };
+  useEffect(() => {
+    if (errorMessage) {
+      toast.error(errorMessage);
+    }
+    if (successMessage) {
+      toast.success(successMessage);
+    }
+  }, [errorMessage, successMessage]);
 
   return {
     formData,
     handleChange,
     handleSubmit,
-    passwordError,
-    registrationSuccess,
+    successMessage,
+    errorMessage,
+    token,
   };
 };

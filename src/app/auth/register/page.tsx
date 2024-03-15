@@ -2,10 +2,9 @@
 import Image from "next/image";
 import React from "react";
 import { useAuth } from "../../hooks/useAuth";
-import { Button } from "@/app/Components/Button";
-import { CustomInput } from "@/app/Components/Input";
-import { CustomForm } from "@/app/Components/Form";
-const SignPage: React.FC = () => {
+import { Button, CustomInput, CustomForm } from "@/app/Components/index";
+
+const RegisterPage: React.FC = () => {
   const {
     formData,
     handleChange,
@@ -47,10 +46,10 @@ const SignPage: React.FC = () => {
           changeHandler={handleChange}
         />
 
-        {registrationSuccess&& <span> вы успешно зарегались </span>}
+        {registrationSuccess && <span> вы успешно зарегались </span>}
       </CustomForm>
     </>
   );
 };
 
-export default SignPage;
+export default RegisterPage;

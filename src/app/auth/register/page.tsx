@@ -1,9 +1,8 @@
 "use client";
 import React from "react";
 import { useAuth } from "../../hooks/useAuth";
-import { Button, CustomInput, CustomForm } from "@/app/Components/index";
+import { CustomButton, CustomInput, CustomForm } from "@/app/Components/index";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const RegisterPage: React.FC = () => {
 
@@ -18,13 +17,13 @@ const RegisterPage: React.FC = () => {
       <CustomForm
         title="Register"
         button={
-          <Button
+          <CustomButton
             type="submit"
             intent={"accept"}
             className="rounded-full w-32"
           >
             Register
-          </Button>
+          </CustomButton>
         }
         handler={handleSubmit}
       >

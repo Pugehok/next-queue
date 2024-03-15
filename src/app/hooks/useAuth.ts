@@ -1,22 +1,26 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
-interface SignData {
+interface loginData {
   email: string;
   password: string;
+}
+interface registerData extends loginData {
   confirmPassword: string;
 }
+type token = string | null;
+type dataMessage = string | null;
 
 export const useAuth = () => {
-  const [formData, setFormData] = useState<SignData>({
+  const [formData, setFormData] = useState<registerData>({
     email: "",
     password: "",
     confirmPassword: "",
   });
 
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [token, setToken] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<dataMessage>(null);
+  const [errorMessage, setErrorMessage] = useState<dataMessage>(null);
+  const [token, setToken] = useState<token>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -32,10 +36,10 @@ export const useAuth = () => {
       setErrorMessage("Please fill in all fields");
       return;
     }
-    login(formData.email, formData.password);
+    login({ email: formData.email, password: formData.password });
   };
 
-  const login = async (email: string, password: string) => {
+  const login = async ({ email, password }: loginData) => {
     try {
       const response = await fetch(
         "https://api.escuelajs.co/api/v1/auth/login",
@@ -48,15 +52,14 @@ export const useAuth = () => {
         }
       );
 
-      if (!response.ok) {
-        throw new Error("Login failed");
+      if (response.ok) {
+        const data = await response.json();
+        setToken(data.access_token);
+        toast.success("Login successful!");
+        return;
       }
-
-      const data = await response.json();
-      setToken(data.access_token);
-      toast.success("Login successful!");
-      console.log(token);
-      setErrorMessage(null);
+      throw new Error("Login failed");
+      
     } catch (error) {
       setErrorMessage("Login failed. Please try again.");
       toast.error(errorMessage);
@@ -76,8 +79,5 @@ export const useAuth = () => {
     formData,
     handleChange,
     handleSubmit,
-    successMessage,
-    errorMessage,
-    token,
   };
 };

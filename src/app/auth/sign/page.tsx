@@ -1,8 +1,7 @@
 "use client";
-import { Button, CustomForm, CustomInput } from "@/app/Components/index";
+import { CustomButton, CustomForm, CustomInput } from "@/app/Components/index";
 import { useAuth } from "@/app/hooks/useAuth";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 const SignPage = () => {
   const {
     formData,
@@ -15,13 +14,13 @@ const SignPage = () => {
       <CustomForm
         title="Sign In"
         button={
-          <Button
+          <CustomButton
             type="submit"
             intent={"accept"}
             className="rounded-full w-32"
           >
             Sign In
-          </Button>
+          </CustomButton>
         }
         handler={handleSubmit}
       >

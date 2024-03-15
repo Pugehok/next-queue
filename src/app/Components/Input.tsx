@@ -26,7 +26,6 @@ export const CustomInput: React.FC<inputProps> = ({
         className={ className? className :"w-full h-10 px-5 py-3 border-2 border-main-lightgray rounded-lg pl-10"}
         placeholder={placeholder}
       />
-      {/* <Image src={email} alt="Email Icon" className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5" /> */}
     </div>
   );
 };

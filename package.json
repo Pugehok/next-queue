@@ -13,7 +13,9 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
-    "sass": "^1.71.1"
+    "react-toastify": "^10.0.4",
+    "sass": "^1.71.1",
+    "toastify-js": "^1.12.0"
   },
   "devDependencies": {
     "@types/node": "^20",

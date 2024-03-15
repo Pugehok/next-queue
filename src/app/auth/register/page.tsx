@@ -1,16 +1,16 @@
 "use client";
-import Image from "next/image";
 import React from "react";
 import { useAuth } from "../../hooks/useAuth";
 import { Button, CustomInput, CustomForm } from "@/app/Components/index";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const RegisterPage: React.FC = () => {
+
   const {
     formData,
     handleChange,
     handleSubmit,
-    passwordError,
-    registrationSuccess,
   } = useAuth();
 
   return (
@@ -18,7 +18,11 @@ const RegisterPage: React.FC = () => {
       <CustomForm
         title="Register"
         button={
-          <Button type="submit" intent={"accept"}>
+          <Button
+            type="submit"
+            intent={"accept"}
+            className="rounded-full w-32"
+          >
             Register
           </Button>
         }
@@ -39,14 +43,13 @@ const RegisterPage: React.FC = () => {
           changeHandler={handleChange}
         />
         <CustomInput
-          name="repeatPassword"
+          name="confirmPassword"
           type="password"
-          currentValue={formData.repeatPassword}
+          currentValue={formData.confirmPassword}
           placeholder="Repeat your password"
           changeHandler={handleChange}
         />
-
-        {registrationSuccess && <span> вы успешно зарегались </span>}
+        <ToastContainer />
       </CustomForm>
     </>
   );
